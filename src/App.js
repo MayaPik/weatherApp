@@ -26,7 +26,9 @@ function App() {
   const handleToggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
-  const [far, setFar] = useState(false);
+  
+  const prefersFar = 'true' === (localStorage.getItem("far") || 'false');
+  const [far, setFar] = useState(prefersFar);
 
   useEffect(() => {
     localStorage.setItem("far", far);
