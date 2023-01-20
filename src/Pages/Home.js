@@ -1,32 +1,23 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Avatar, Snackbar, Stack, Alert, Typography, CardContent, Card, Button, TextField, Autocomplete } from "@mui/material";
+import { Favorite } from "@mui/icons-material";
+
 import setWeather from "../components/setWeather";
 import NextFive from "../components/NextFive";
-import React from "react";
 import "./Home.css";
-import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import { Avatar } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import Alert from "@mui/material/Alert";
-import { Snackbar } from "@mui/material";
-import { Stack } from "@mui/material";
-import { Favorite } from "@mui/icons-material";
 
 function Home({ far }) {
   const [input, setInput] = useState("");
   const [options, setOptions] = useState([]);
-  const [city, setCity] = useState({
-    Key: "215854",
-    Type: "City",
-    LocalizedName: "Tel Aviv",
-  });
   const [current, setCurrent] = useState({});
   const [fiveDays, setFiveDays] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [error, setError] = useState(null);
+   const [city, setCity] = useState({
+    Key: "215854",
+    Type: "City",
+    LocalizedName: "Tel Aviv",
+  });
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
@@ -52,7 +43,7 @@ function Home({ far }) {
   }, [input, API_KEY]);
 
   useEffect(() => {
-    setWeather(String(city.Key))
+    setWeather(String(city?.Key))
       .then((weatherData) => {
         setCurrent({
           far: weatherData.far,
