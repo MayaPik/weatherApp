@@ -48,7 +48,7 @@ function Home({ far }) {
         setError(true);
       }
     }
-  }, [input, API_KEY]);
+  }, [input]);
 
   useEffect(() => {
     setWeather(String(city.Key))
