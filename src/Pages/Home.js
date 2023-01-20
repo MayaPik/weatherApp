@@ -34,8 +34,7 @@ function Home({ far }) {
       try {
         fetch(
           `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${
-            input || ""
-          }`
+            input}`
         )
           .then((resp) => resp.json())
           .then((json) => {
@@ -53,7 +52,7 @@ function Home({ far }) {
   }, [input, API_KEY]);
 
   useEffect(() => {
-    setWeather(String(city.Key))
+    setWeather(String(Key))
       .then((weatherData) => {
         setCurrent({
           far: weatherData.far,
@@ -70,7 +69,7 @@ function Home({ far }) {
   }, [city]);
 
   useEffect(() => {
-    if (city.Key) {
+    if (city?.Key) {
       NextFive(String(city.Key)).then((fiveDays) => {
         setFiveDays(fiveDays);
       });
@@ -98,7 +97,7 @@ function Home({ far }) {
       if (Object.keys(city).length > 0) {
         if (
           !favorites.some(
-            (favCity) => favCity.LocalizedName === city.LocalizedName
+            (favCity) => favCity.LocalizedName === city?.LocalizedName
           )
         ) {
           favorites.push(city);
@@ -157,16 +156,16 @@ function Home({ far }) {
       <div className="upperScreen">
         <Card sx={{ maxwidth: 450, padding: 3 }} className="card">
           <Button onClick={addToFavorites}>
-            {error ? "" : `Add ${city.LocalizedName} to Favorites`} <Favorite />
+            {error ? "" : `Add ${city?.LocalizedName} to Favorites`} <Favorite />
           </Button>
           <CardContent>
             <Typography sx={{ mb: 1.5 }} variant="h6" component="div">
               {error
                 ? "There is a error with the server, hang tight!"
-                : `The current weather in ${city.LocalizedName}`}
+                : `The current weather in ${city?.LocalizedName}`}
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              {error ? "" : `The current weather in ${city.LocalizedName}`}
+              {error ? "" : `The current weather in ${city?.LocalizedName}`}
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary">
               {error
