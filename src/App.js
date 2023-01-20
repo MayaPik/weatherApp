@@ -27,12 +27,12 @@ function App() {
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
+useEffect(() => {
   const storedDarkMode = localStorage.getItem("darkMode");
-  useEffect(() => {
     //if (storedDarkMode) {
       setDarkMode(JSON.parse(storedDarkMode));
   //  }
-  }, [storedDarkMode]);
+  }, [darkMode]);
 
   const handleToggleDarkMode = () => {
     setDarkMode(!darkMode);
