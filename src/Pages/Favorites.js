@@ -10,7 +10,6 @@ function Favorites({ far }) {
   const [favorites, setFavorites] = useState([]);
   const [temperatures, setTemperatures] = useState([]);
   const [error, setError] = useState(null);
-  console.log(temperatures);
 
   useEffect(() => {
     let storedFavorites = localStorage.getItem("favorites")
