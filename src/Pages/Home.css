@@ -1,0 +1,74 @@
+body {
+  background-color: rgb(234, 244, 218);
+  width: 100vw;
+}
+
+.search {
+  display: flex;
+  margin: 2em;
+  width: 60vw;
+  line-height: 2rem;
+  margin-right: 2em;
+}
+.card {
+  margin: 2em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-device-width: 600px) {
+  .weather-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+@media (max-device-width: 600px) {
+  .weather-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+@media (max-device-width: 600px) {
+  .upperScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.button {
+  margin: 2em;
+}
+
+.headline {
+  text-align: center;
+}
+
+@media (min-device-width: 600px) {
+  .upperScreen {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 2em;
+  }
+}
+
+.eachDay {
+  display: flex;
+  flex-direction: column;
+}
+
+.upperScreen img {
+  width: 20vw;
+  align-self: center;
+}

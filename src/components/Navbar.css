@@ -1,0 +1,28 @@
+.nav {
+  display: flex;
+  height: 3em;
+  flex-direction: row;
+  font-weight: bolder;
+  width: 100vw;
+}
+
+.nav h2 {
+  font-size: medium;
+  align-self: center;
+  margin-left: 1em;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: 2em;
+}
+
+.links a {
+  margin-right: 2em;
+  padding: 0.3em;
+  font-size: medium;
+  text-decoration: none;
+}
