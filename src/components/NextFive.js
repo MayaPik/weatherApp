@@ -3,7 +3,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 async function NextFive(locationKey) {
   try {
     const response = await fetch(
-      `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${API_KEY}`
+      `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${API_KEY}`
     );
     if (!response.ok) {
       throw new Error(response.statusText);
