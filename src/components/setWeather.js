@@ -1,8 +1,9 @@
 const API_KEY = process.env.REACT_APP_API_KEY;
+
 async function setWeather(locationKey) {
   try {
     const response = await fetch(
-      `http://dataservice.accuweather.com//currentconditions/v1/${locationKey}?apikey=${API_KEY}`
+      `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${API_KEY}`
     );
     if (!response.ok) {
       throw new Error(response.statusText);
