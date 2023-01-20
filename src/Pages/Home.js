@@ -52,7 +52,7 @@ function Home({ far }) {
   }, [input, API_KEY]);
 
   useEffect(() => {
-    setWeather(String(Key))
+    setWeather(String(city.Key))
       .then((weatherData) => {
         setCurrent({
           far: weatherData.far,
