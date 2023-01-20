@@ -14,29 +14,24 @@ function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const [darkMode, setDarkMode] = useState(prefersDarkMode);
   const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: darkMode ? "dark" : "light",
-        },
-      }),
+    () => createTheme({ palette: { mode: darkMode ? "dark" : "light" } }),
     [darkMode]
   );
 
   useEffect(() => {
-    localStorage.setItem("darkMode", darkMode);
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }, [darkMode]);
-  const storedDarkMode = localStorage.getItem("darkMode");
+
+  const storedDarkMode = JSON.parse(localStorage.getItem("darkMode"));
   useEffect(() => {
-    //if (storedDarkMode) {
-      setDarkMode(JSON.parse(storedDarkMode));
-  //  }
+    if (storedDarkMode !== null) {
+      setDarkMode(storedDarkMode);
+    }
   }, [storedDarkMode]);
 
   const handleToggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
-
   const [far, setFar] = useState(false);
 
   useEffect(() => {

@@ -63,7 +63,7 @@ function Home({ far }) {
       })
       .catch(function (error) {
         console.log(`We got the error ${error}`);
-        setError(error);
+        setError(true);
       });
   }, [city]);
 
