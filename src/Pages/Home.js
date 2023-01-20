@@ -76,10 +76,14 @@ function Home({ far }) {
   }, [city]);
 
   const updateInput = (event, newValue) => {
-    if (event) {
-      setInput(event.target.value);
+    if (input == null) {
+      setInput("");
     } else {
-      setInput(newValue);
+      if (event) {
+        setInput(event.target.value);
+      } else {
+        setInput(newValue);
+      }
     }
   };
 
