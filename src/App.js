@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 
 function App() {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const prefersDarkMode = 'true' === (localStorage.getItem("darkMode") || 'false');
   const [darkMode, setDarkMode] = useState(prefersDarkMode);
 
   const theme = useMemo(
@@ -20,15 +20,8 @@ function App() {
   );
 
   useEffect(() => {
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    localStorage.setItem("darkMode", darkMode ? 'true' : 'false');
   }, [darkMode]);
-
-  const storedDarkMode = JSON.parse(localStorage.getItem("darkMode"));
-  useEffect(() => {
-    if (storedDarkMode !== null) {
-      setDarkMode(storedDarkMode);
-    }
-  }, [storedDarkMode]);
 
   const handleToggleDarkMode = () => {
     setDarkMode(!darkMode);
