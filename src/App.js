@@ -16,7 +16,7 @@ function App() {
 
   const theme = useMemo(
     () => createTheme({ palette: { mode: darkMode ? "dark" : "light" } }),
-    []
+    [darkMode]
   );
 
   useEffect(() => {
