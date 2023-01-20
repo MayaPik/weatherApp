@@ -79,7 +79,11 @@ function Home({ far }) {
     if (input == null) {
       setInput("");
     } else {
-      setInput(newValue);
+      if (event) {
+        setInput(event.target.value);
+      } else {
+        setInput(newValue);
+      }
     }
   };
 
