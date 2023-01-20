@@ -32,7 +32,7 @@ function App() {
     if (storedDarkMode) {
       setDarkMode(JSON.parse(storedDarkMode));
     }
-  }, []);
+  }, [storedDarkMode]);
 
   const handleToggleDarkMode = () => {
     setDarkMode(!darkMode);

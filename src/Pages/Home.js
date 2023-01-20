@@ -28,16 +28,6 @@ function Home({ far }) {
   const [showAlert, setShowAlert] = useState(false);
   const [error, setError] = useState(null);
   const API_KEY = process.env.REACT_APP_API_KEY;
-  // const storedFar = far
-
-  // const [far, setFar] = useState(storedFar);
-  // useEffect(() => {
-  //   setFar(JSON.parse(storedFar));
-  // }, [far]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("far", far);
-  // }, [far]);
 
   useEffect(() => {
     if (input) {
@@ -58,7 +48,7 @@ function Home({ far }) {
         setError(true);
       }
     }
-  }, [input]);
+  }, [input, API_KEY]);
 
   useEffect(() => {
     setWeather(String(city.Key))
