@@ -33,7 +33,9 @@ function Home({ far }) {
     if (input) {
       try {
         fetch(
-          `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${input}`
+          `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${
+            input || ""
+          }`
         )
           .then((resp) => resp.json())
           .then((json) => {
@@ -76,14 +78,10 @@ function Home({ far }) {
   }, [city]);
 
   const updateInput = (event, newValue) => {
-    if (input == null) {
-      setInput("");
+    if (event) {
+      setInput(event.target.value);
     } else {
-      if (event) {
-        setInput(event.target.value);
-      } else {
-        setInput(newValue);
-      }
+      setInput(newValue);
     }
   };
 
