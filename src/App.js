@@ -29,9 +29,9 @@ function App() {
 
   const storedDarkMode = localStorage.getItem("darkMode");
   useEffect(() => {
-    if (storedDarkMode) {
+    //if (storedDarkMode) {
       setDarkMode(JSON.parse(storedDarkMode));
-    }
+  //  }
   }, [storedDarkMode]);
 
   const handleToggleDarkMode = () => {
