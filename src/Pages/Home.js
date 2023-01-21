@@ -57,10 +57,7 @@ function Home({ far }) {
       }
     }
     fetchData();
-    if (!city) {
-      fetchData();
-    }
-  }, [city]);
+  }, []);
 
   useEffect(() => {
     if (input) {
