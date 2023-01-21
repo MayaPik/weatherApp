@@ -20,7 +20,6 @@ import getCurrentLocation from "../actions/GetLocation";
 import "./Home.css";
 async function getLocation() {
   const location = await getCurrentLocation();
-  console.log(location);
   const currentCity = {
     Key: location.Key,
     Type: location.Type,
