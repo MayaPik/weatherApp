@@ -10,7 +10,6 @@ async function NextFive(locationKey) {
     }
     const json = await response.json();
     const answer = json.DailyForecasts;
-    console.log(answer);
     const final = answer.map((each) => ({
       date: new Date(each.Date).toLocaleDateString("il-IL", {
         weekday: "long",
