@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
-import setWeather from "../components/setWeather";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+import {
+  Button,
+  Avatar,
+  Snackbar,
+  Alert,
+  Typography,
+  CardContent,
+  Card,
+} from "@mui/material";
+
+import setWeather from "../actions/setWeather";
 import "./Home.css";
-import { Button, Avatar, Snackbar, Alert } from "@mui/material";
 
 function Favorites({ far }) {
   const [favorites, setFavorites] = useState([]);

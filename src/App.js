@@ -1,17 +1,14 @@
 import { useState, useMemo, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
+
+import Navbar from "./components/Navbar";
 import Home from "./Pages/Home";
 import Favorites from "./Pages/Favorites";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import {
-  useMediaQuery,
-  CssBaseline,
-  createTheme,
-  ThemeProvider,
-} from "@mui/material";
 
 function App() {
-  const prefersDarkMode = 'true' === (localStorage.getItem("darkMode") || 'false');
+  const prefersDarkMode =
+    "true" === (localStorage.getItem("darkMode") || "false");
   const [darkMode, setDarkMode] = useState(prefersDarkMode);
 
   const theme = useMemo(
@@ -20,14 +17,14 @@ function App() {
   );
 
   useEffect(() => {
-    localStorage.setItem("darkMode", darkMode ? 'true' : 'false');
+    localStorage.setItem("darkMode", darkMode ? "true" : "false");
   }, [darkMode]);
 
   const handleToggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
-  
-  const prefersFar = 'true' === (localStorage.getItem("far") || 'false');
+
+  const prefersFar = "true" === (localStorage.getItem("far") || "false");
   const [far, setFar] = useState(prefersFar);
 
   useEffect(() => {

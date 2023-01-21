@@ -1,10 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Snackbar, Stack, Alert, Typography, CardContent, Card, Button, TextField, Autocomplete } from "@mui/material";
+import {
+  Avatar,
+  Snackbar,
+  Stack,
+  Alert,
+  Typography,
+  CardContent,
+  Card,
+  Button,
+  TextField,
+  Autocomplete,
+} from "@mui/material";
 import { Favorite } from "@mui/icons-material";
 
-import setWeather from "../components/setWeather";
-import NextFive from "../components/NextFive";
+import setWeather from "../actions/setWeather";
+import NextFive from "../actions/NextFive";
+import getCurrentLocation from "../actions/GetLocation";
+
 import "./Home.css";
+async function getLocation() {
+  const location = await getCurrentLocation();
+  console.log(location);
+  const currentCity = {
+    Key: location.Key,
+    Type: location.Type,
+    LocalizedName: location.LocalizedName,
+  };
+  return currentCity;
+}
 
 function Home({ far }) {
   const [input, setInput] = useState("");
@@ -13,7 +36,7 @@ function Home({ far }) {
   const [fiveDays, setFiveDays] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [error, setError] = useState(null);
-   const [city, setCity] = useState({
+  const [city, setCity] = useState({
     Key: "215854",
     Type: "City",
     LocalizedName: "Tel Aviv",
@@ -21,11 +44,26 @@ function Home({ far }) {
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
+    async function fetchData() {
+      try {
+        const location = await getLocation();
+        setCity(location);
+      } catch (error) {
+        setCity({
+          Key: "215854",
+          Type: "City",
+          LocalizedName: "Tel Aviv",
+        });
+      }
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     if (input) {
       try {
         fetch(
-          `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${
-            input}`
+          `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${input}`
         )
           .then((resp) => resp.json())
           .then((json) => {
@@ -43,20 +81,22 @@ function Home({ far }) {
   }, [input, API_KEY]);
 
   useEffect(() => {
-    setWeather(String(city?.Key))
-      .then((weatherData) => {
-        setCurrent({
-          far: weatherData.far,
-          cel: weatherData.cel,
-          icon: weatherData.icon,
-          rain: weatherData.rain,
-          text: weatherData.text,
+    if (city.Key) {
+      setWeather(String(city?.Key))
+        .then((weatherData) => {
+          setCurrent({
+            far: weatherData.far,
+            cel: weatherData.cel,
+            icon: weatherData.icon,
+            rain: weatherData.rain,
+            text: weatherData.text,
+          });
+        })
+        .catch(function (error) {
+          console.log(`We got the error ${error}`);
+          setError(true);
         });
-      })
-      .catch(function (error) {
-        console.log(`We got the error ${error}`);
-        setError(true);
-      });
+    }
   }, [city]);
 
   useEffect(() => {
@@ -147,7 +187,8 @@ function Home({ far }) {
       <div className="upperScreen">
         <Card sx={{ maxwidth: 450, padding: 3 }} className="card">
           <Button onClick={addToFavorites}>
-            {error ? "" : `Add ${city?.LocalizedName} to Favorites`} <Favorite />
+            {error ? "" : `Add ${city?.LocalizedName} to Favorites`}{" "}
+            <Favorite />
           </Button>
           <CardContent>
             <Typography sx={{ mb: 1.5 }} variant="h6" component="div">

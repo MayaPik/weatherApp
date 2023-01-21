@@ -1,7 +1,7 @@
-// import { useState, useEffect } from "react";
-import "./Navbar.css";
 import { Home, Favorite, LightMode, DarkMode } from "@mui/icons-material";
 import { Button } from "@mui/material";
+
+import "./Navbar.css";
 
 function Navbar({ onToggleDarkMode, darkMode, onFarMode, far }) {
   return (
