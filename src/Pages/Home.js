@@ -96,6 +96,20 @@ function Home({ far }) {
           console.log(`We got the error ${error}`);
           setError(true);
         });
+    } else {
+      async function fetchData() {
+        try {
+          const location = await getLocation();
+          setCity(location);
+        } catch (error) {
+          setCity({
+            Key: "215854",
+            Type: "City",
+            LocalizedName: "Tel Aviv",
+          });
+        }
+      }
+      fetchData();
     }
   }, [city]);
 
