@@ -1,6 +1,6 @@
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-async function NextFive(locationKey) {
+async function nextFive(locationKey) {
   try {
     const response = await fetch(
       `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${API_KEY}`
@@ -10,7 +10,6 @@ async function NextFive(locationKey) {
     }
     const json = await response.json();
     const answer = json.DailyForecasts;
-    console.log(answer);
     const final = answer.map((each) => ({
       date: new Date(each.Date).toLocaleDateString("il-IL", {
         weekday: "long",
@@ -32,4 +31,4 @@ async function NextFive(locationKey) {
   }
 }
 
-export default NextFive;
+export default nextFive;

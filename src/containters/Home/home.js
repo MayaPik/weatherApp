@@ -14,13 +14,12 @@ import {
 import { Favorite } from "@mui/icons-material";
 
 import setWeather from "../actions/setWeather";
-import NextFive from "../actions/NextFive";
+import NextFive from "../actions/nextFive";
 import getCurrentLocation from "../actions/GetLocation";
 
 import "./Home.css";
 async function getLocation() {
   const location = await getCurrentLocation();
-  console.log(location);
   const currentCity = {
     Key: location.Key,
     Type: location.Type,

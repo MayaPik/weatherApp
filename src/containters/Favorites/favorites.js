@@ -9,7 +9,7 @@ import {
   Card,
 } from "@mui/material";
 
-import setWeather from "../actions/setWeather";
+import setWeather from "../../actions/setWeather";
 import "./Home.css";
 
 function Favorites({ far }) {

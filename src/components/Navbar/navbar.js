@@ -1,7 +1,7 @@
 import { Home, Favorite, LightMode, DarkMode } from "@mui/icons-material";
 import { Button } from "@mui/material";
 
-import "./Navbar.css";
+import "./navbar.css";
 
 function Navbar({ onToggleDarkMode, darkMode, onFarMode, far }) {
   return (

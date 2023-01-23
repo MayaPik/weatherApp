@@ -2,9 +2,9 @@ import { useState, useMemo, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
 
-import Navbar from "./components/Navbar";
-import Home from "./Pages/Home";
-import Favorites from "./Pages/Favorites";
+import Navbar from "./components/Navbar/navbar";
+import Home from "./containers/Home/home";
+import Favorites from "./containers/Favorites/favorites";
 
 function App() {
   const prefersDarkMode =
